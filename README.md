@@ -3,7 +3,7 @@ Authentication of handwritten signatures using digital image processing and neur
 
 ## Dataset Used : Signature verification data
 The dataset used was gotten from the ICDAR 2009 Signature Verification Competition (SigComp2009).
-link to the data: http://www.iapr-tc11.org/mediawiki/index.php?title=ICDAR_2009_Signature_Verification_Competition_(SigComp2009)  
+Link to the data: http://www.iapr-tc11.org/mediawiki/index.php?title=ICDAR_2009_Signature_Verification_Competition_(SigComp2009)  
 
 ## In train_test_data folder: training and testing data for model
 
