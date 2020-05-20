@@ -15,4 +15,4 @@ Genuine Signature image count : 35
 Forged Signature images count : 36
 Genuine Signature image count : 36
 
-## In model folder: back propagation neural network model & data preprocessing files
+

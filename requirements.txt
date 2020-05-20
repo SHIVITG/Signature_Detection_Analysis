@@ -1,5 +1,0 @@
-##-----------requriements--------------------##
-
-OpenCV==3.2
-Numpy
-Tensorflow
