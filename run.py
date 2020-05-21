@@ -200,3 +200,46 @@ def create_base_network_signet(input_shape):
     return seq
 
 input_shape=(img_h, img_w, 1)
+
+# network definition
+base_network = create_base_network_signet(input_shape)
+
+input_a = Input(shape=(input_shape))
+input_b = Input(shape=(input_shape))
+
+# because we re-use the same instance `base_network`,
+# the weights of the network
+# will be shared across the two branches
+processed_a = base_network(input_a)
+processed_b = base_network(input_b)
+
+# Compute the Euclidean distance between the two vectors in the latent space
+distance = Lambda(euclidean_distance, output_shape=eucl_dist_output_shape)([processed_a, processed_b])
+
+model = Model(input=[input_a, input_b], output=distance)
+
+
+batch_sz = 128
+num_train_samples = 276*120 + 300*120
+num_val_samples = num_test_samples = 276*20 + 300*20
+print(num_train_samples, num_val_samples, num_test_samples)
+
+# compile model using RMSProp Optimizer and Contrastive loss function defined above
+rms = RMSprop(lr=1e-4, rho=0.9, epsilon=1e-08)
+model.compile(loss=contrastive_loss, optimizer=rms)
+
+
+# Using Keras Callbacks, save the model after every epoch
+# Reduce the learning rate by a factor of 0.1 if the validation loss does not improve for 5 epochs
+# Stop the training using early stopping if the validation loss does not improve for 12 epochs
+callbacks = [
+    EarlyStopping(patience=12, verbose=1),
+    ReduceLROnPlateau(factor=0.1, patience=5, min_lr=0.000001, verbose=1),
+    ModelCheckpoint('model.h5', verbose=1, save_weights_only=True)
+
+results = model.fit_generator(generate_batch(orig_train, forg_train, batch_sz),
+                              steps_per_epoch = num_train_samples//batch_sz,
+                              epochs = 100,
+                              validation_data = generate_batch(orig_val, forg_val, batch_sz),
+                              validation_steps = num_val_samples//batch_sz,
+                              callbacks = callbacks)
