@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 import os
 import matplotlib.pyplot as plt
-%matplotlib inline
+
 
 import cv2
 import time
