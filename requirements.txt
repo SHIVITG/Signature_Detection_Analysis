@@ -1,7 +1,6 @@
 opencv-contrib-python==3.4.2.16
 tensorflow-gpu 
 keras
-Pillow==6.2.1
 numpy==1.17.3
 scipy==1.3.2
 scikit-image==0.15.0
