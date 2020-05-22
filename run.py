@@ -5,7 +5,6 @@ import numpy as np
 import pickle
 import os
 import matplotlib.pyplot as plt
-%matplotlib inline
 
 import cv2
 import time
@@ -120,7 +119,7 @@ p_model.summary()
 callbacks = [
     EarlyStopping(patience=15, verbose=1),
     ReduceLROnPlateau(factor=0.1, patience=5, min_lr=0.000001, verbose=1),
-    ModelCheckpoint('model-signet-{epoch:03d}.h5', verbose=1, save_weights_only=True)
+    ModelCheckpoint('Weights/model-signet-{epoch:03d}.h5', verbose=1, save_weights_only=True)
 ]
 
 batch_sz = 128
@@ -137,10 +136,10 @@ results = p_model.fit_generator(generate_batch(orig_train, forg_train, batch_sz)
 
 acc_thresh = []
 for i in range(1,20,1):
-    acc_thresh.append(load_and_check_model('model-signet-'+str(i).zfill(3)+'.h5'))
+    acc_thresh.append(load_and_check_model('Weights/model-signet-'+str(i).zfill(3)+'.h5'))
     print('For model '+str(i)+' Validation Accuracy = ',acc_thresh[i-1][0]*100,'%')
     
-acc, threshold = test_model('model-signet-020.h5')
+acc, threshold = test_model('Weights/model-signet-020.h5')
 print("Accuracy: {} & Threshold: {}".format(acc, threshold))
 
 predict_score()
