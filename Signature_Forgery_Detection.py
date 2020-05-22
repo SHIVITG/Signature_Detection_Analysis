@@ -150,7 +150,7 @@ def visualize_sample_signature():
 # In[21]:
 
 
-visualize_sample_signature()
+#visualize_sample_signature()
 
 
 # In[23]:
