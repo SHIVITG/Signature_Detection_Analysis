@@ -467,14 +467,14 @@ for i in range(1,39,1):
 
 
 def test_model(weight):
-    model.load_weights(weight)
+    p_model.load_weights(weight)
 
     test_gen = generate_batch(orig_test, forg_test, 1)
     pred, tr_y = [], []
     for i in range(num_test_samples):
         (img1, img2), label = next(test_gen)
         tr_y.append(label)
-        pred.append(model.predict([img1, img2])[0][0])
+        pred.append(p_model.predict([img1, img2])[0][0])
 
     tr_acc, threshold = compute_accuracy_roc(np.array(pred), np.array(tr_y), plot_far_frr = True)
     return tr_acc, threshold
@@ -484,11 +484,6 @@ acc, threshold
 
 
 # In[ ]:
-
-
-# Accuracy = 86.68% and Threshold = 0.71 Using Xavier Initialisation on Uniform distribution
-# Thus if the difference score is less than 0.71 we predict the test image as Genuine and if the difference score is greater than 0.71 we predict it to be as forged
-
 
 def predict_score():
     '''Predict distance score and classify test images as Genuine or Forged'''
@@ -507,7 +502,7 @@ def predict_score():
     ax1.axis('off')
     ax2.axis('off')
     plt.show()
-    result = model.predict([img1, img2])
+    result = p_model.predict([img1, img2])
     diff = result[0][0]
     print("Difference Score = ", diff)
     if diff > threshold:
