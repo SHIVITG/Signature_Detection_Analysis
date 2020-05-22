@@ -44,7 +44,7 @@ def generate_batch(orig_groups, forg_groups, batch_size = 32):
         gen_for_labels = []
         all_pairs = []
         all_labels = []
-        
+        img_h, img_w = 155, 220
         # Here we create pairs of Genuine-Genuine image names and Genuine-Forged image names
         # For every person we have 24 genuine signatures, hence we have 
         # 24 choose 2 = 276 Genuine-Genuine image pairs for one person.
