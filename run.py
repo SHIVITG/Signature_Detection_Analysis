@@ -36,7 +36,7 @@ from keras.utils.multi_gpu_utils import multi_gpu_model
 
 from preprocessing import fetch_groups
 from tensorflow_details import _get_available_gpus
-from model import create_base_network_signet, load_and_check_model, test_model, predict_score
+from model import create_base_network_signet, euclidean_distance, load_and_check_model, test_model, predict_score
 
 # ----------------------------------------------------------------------------------------------------#
 # ----------------------------------------STEP :1-----------------------------------------------------#
