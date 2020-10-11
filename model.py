@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 import os
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 import cv2
 import time
@@ -14,6 +14,7 @@ from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 import keras
 import tensorflow as tf
+print(tf.__version__)
 from keras import models
 from keras.models import Sequential
 from keras.optimizers import Adam, RMSprop
