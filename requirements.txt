@@ -2,7 +2,7 @@ opencv-contrib-python==4.2.0.32
 tensorflow-gpu 
 keras
 numpy==1.17.3
-scipy==1.3.2
+scipy==1.10.0
 scikit-image==0.15.0
 scikit-learn==0.21.3
 ImageHash==4.0.0
