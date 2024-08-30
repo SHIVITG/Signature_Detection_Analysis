@@ -1,4 +1,4 @@
-opencv-contrib-python==4.2.0.32
+opencv-contrib-python==4.8.1.78
 tensorflow-gpu 
 keras
 numpy==1.17.3
