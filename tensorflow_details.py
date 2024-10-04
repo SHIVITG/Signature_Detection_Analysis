@@ -1,7 +1,6 @@
 import tensorflow as tf
 import keras.backend.tensorflow_backend as tfback
-print("tf.__version__ is", tf.__version__)
-print("tf.keras.__version__ is:", tf.keras.__version__)
+
 
 def _get_available_gpus():
     """Get a list of available gpu devices (formatted as strings).
@@ -16,3 +15,7 @@ def _get_available_gpus():
     return [x for x in tfback._LOCAL_DEVICES if 'device:gpu' in x.lower()]
 
 tfback._get_available_gpus = _get_available_gpus
+print(_get_available_gpus)
+
+print("tf.__version__ is", tf.__version__)
+print("tf.keras.__version__ is:", tf.keras.__version__)
